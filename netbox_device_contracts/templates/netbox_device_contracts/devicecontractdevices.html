@@ -1,0 +1,52 @@
+{% extends 'generic/object.html' %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Device Contact Devices</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Contract</th>
+              <td>
+                <a href="{{ object.device_contract.get_absolute_url }}">{{ object.device_contract }}</a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Index</th>
+              <td>{{ object.index }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Description</th>
+              <td>{{ object.description|placeholder }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {% include 'inc/panels/custom_fields.html' %}
+    </div>
+    <div class="col col-md-6">
+      {% include 'inc/panels/tags.html' %}
+      {% include 'inc/panels/comments.html' %}
+    </div>
+	<div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Details</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Device Contract</th>
+              <td>{{ object.device_contract }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Device</th>
+              <td>{{ object.device }}</td>
+            </tr>
+	  </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
