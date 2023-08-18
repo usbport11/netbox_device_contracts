@@ -13,3 +13,5 @@ Install steps:
 7) /opt/netbox/netbox/manage.py migrate
 8) deactivate
 9) systemctl start netbox netbox-rq
+
+There is bug while search devices!
