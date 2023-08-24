@@ -16,4 +16,4 @@ class DeviceContractDevicesFilterSet(NetBoxModelFilterSet):
         fields = ('id', 'device_contract', 'device')
 
     def search(self, queryset, name, value):
-        return queryset.filter(name__icontains=value)
+        return queryset.filter(device__name__icontains=value)
