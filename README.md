@@ -14,4 +14,3 @@ Install steps:
 8) deactivate
 9) systemctl start netbox netbox-rq
 
-There is bug while search devices!
