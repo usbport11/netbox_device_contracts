@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelChoiceField
 from netbox.forms import NetBoxModelForm, NetBoxModelFilterSetForm
 from utilities.forms import DateTimePicker, DynamicModelChoiceField
 from dcim.models import Device
@@ -14,16 +15,19 @@ class DeviceContractForm(NetBoxModelForm):
         }
 
 class DeviceContractDevicesForm(NetBoxModelForm):
-    device_contract = DynamicModelChoiceField(
-        queryset=DeviceContract.objects.all()
+    serial = forms.CharField(
+        max_length = 30,
+        required = False
     )
     device = DynamicModelChoiceField(
-        queryset=Device.objects.all()
+        queryset=Device.objects.all(),
+        query_params = {
+            'serial': '$serial',
+        }
     )
-
     class Meta:
         model = DeviceContractDevices
-        fields = ('device_contract', 'device', 'tags')
+        fields = ('device_contract', 'serial', 'device', 'tags')
 
 class DeviceContractFilterForm(NetBoxModelFilterSetForm):
     model = DeviceContract

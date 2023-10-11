@@ -67,10 +67,9 @@ class DeviceContractDevices(NetBoxModel):
 
     class Meta:
         ordering = ('device',)
-        unique_together = ('device',)
 
     def __str__(self):
-        return self.device_contract.name
+        return f'{self.device_contract}: Device {self.device}'
 
     def get_absolute_url(self):
         return reverse('plugins:netbox_device_contracts:devicecontractdevices', args=[self.pk])

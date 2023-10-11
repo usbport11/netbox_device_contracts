@@ -22,6 +22,6 @@ class DeviceContractDevicesTable(NetBoxTable):
     )
 
     class Meta(NetBoxTable.Meta):
-        model = DeviceContract
+        model = DeviceContractDevices
         fields = ('pk', 'id', 'device_contract', 'device', 'actions')
-        default_columns = ('device_contract', 'device', 'actions')
+        default_columns = ('device', 'device_contract', 'actions')
